@@ -1,0 +1,13 @@
+set serveroutput on;
+
+CREATE OR REPLACE TRIGGER dml_clienti
+   BEFORE INSERT OR UPDATE OR DELETE ON clienti
+BEGIN
+  dbms_output.put_line('Operatie DML in tabela clienti !');
+  CASE
+     WHEN INSERTING THEN DBMS_OUTPUT.PUT_LINE('INSERT');
+     WHEN DELETING THEN DBMS_OUTPUT.PUT_LINE('DELETE');
+     WHEN UPDATING THEN DBMS_OUTPUT.PUT_LINE('UPDATE');
+  END CASE;
+END;
+/
